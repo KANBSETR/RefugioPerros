@@ -48,8 +48,8 @@ def modificar(request):
 
 
 def buscar(request):
-    idRefugio=request.POST.get('idRefugio')
-    buscarRefugio = Refugio.objects.all()
-    if idRefugio==buscarRefugio.idRefugio:
+    idRefugio = request.POST.get('idRefugio')
+    buscarRefugio = Refugio.objects.filter(idRefugio=idRefugio)
+    if buscarRefugio.exists():
         return render(request, 'buscarRefugio.html', {'refugios': buscarRefugio})
         
