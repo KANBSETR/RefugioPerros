@@ -5,33 +5,40 @@
     <div class="row">
         <div class="col-md-12">
             <h1 class="text-center">Buscar</h1>
+
+            <form action="{% url 'buscar' %}" method="post"></form>
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="nombre">Ingrese el id del refugio</label>
+                    <input type="text" class="form-control" id="idRefugio" name="idRefugio" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
         </div>
     </div>
     <div class="row mt-5">
         <div class="col-md-12">
-            <form action="{% url 'buscar' %}" method="POST">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Buscar</button>
-            </form>
             <br>
             <table class="table">
-                <thead>
+                <thead class="thead-dark"></thead>
                     <tr>
-                        <th>Nombre del Refugio</th>
+                        <th>ID</th>
+                        <th>Nombre</th>
                         <th>Dirección</th>
                         <th>Teléfono</th>
+                        <th>Email</th>
+                        <th>Descripción</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for refugio in refugios %}
+                    {% for refugio in buscarRefugios %}
                     <tr>
+                        <td>{{ refugio.id_refugio}}</td>
                         <td>{{ refugio.nombre }}</td>
                         <td>{{ refugio.direccion }}</td>
                         <td>{{ refugio.telefono }}</td>
+                        <td>{{ refugio.email }}</td>
+                        <td>{{ refugio.descripcion }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>

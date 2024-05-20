@@ -12,6 +12,7 @@
     <table class="table">
         <thead class="thead-dark"></thead>
             <tr>
+                <th>ID</th>
                 <th>Nombre</th>
                 <th>Dirección</th>
                 <th>Teléfono</th>
@@ -22,6 +23,7 @@
         <tbody>
             {% for refugio in refugios %}
             <tr>
+                <td>{{ refugio.id_refugio }}</td>
                 <td>{{ refugio.nombre }}</td>
                 <td>{{ refugio.direccion }}</td>
                 <td>{{ refugio.telefono }}</td>

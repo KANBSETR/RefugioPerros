@@ -34,11 +34,10 @@ def listar(request):
 
 def eliminar(request):
     if request.method == 'POST':
-        nombre = request.POST.get('nombre')
-        
-        refugio = Refugio.objects.get(nombre=nombre)
+        idRefugio = request.POST.get('idRefugio')
+        refugio = Refugio.objects.get(idRefugio=idRefugio)
+
         refugio.delete()
-        
         return redirect('listar')
     
     return render(request, 'eliminarRefugio.html')
@@ -47,7 +46,10 @@ def modificar(request):
     
     return render(request, 'modificarRefugio.html')
 
+
 def buscar(request):
-    if request.GET["refugio"]:
-        refugio = Refugio.objects.get(nombre=request.GET["refugio"])
+    idRefugio=request.POST.get('idRefugio')
+    buscarRefugio = Refugio.objects.all()
+    if idRefugio==buscarRefugio.idRefugio:
+        return render(request, 'buscarRefugio.html', {'refugios': buscarRefugio})
         

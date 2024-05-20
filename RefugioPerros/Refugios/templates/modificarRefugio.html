@@ -9,6 +9,16 @@
     </div>
     <div class="row mt-5">
         <div class="col-md-12">
+            <form action="{% url 'buscar' %}" method="GET">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="nombre">ID Refugio</label>
+                    <input type="text" class="form-control" id="idRefugio" name="idRefugio" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Buscar</button>
+            </form>
+
             <form action="{% url 'modificar' %}" method="POST"></form>
                 {% csrf_token %}
                 <div class="form-group">

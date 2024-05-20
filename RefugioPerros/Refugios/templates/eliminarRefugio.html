@@ -9,11 +9,11 @@
     </div>
     <div class="row mt-5">
         <div class="col-md-6 offset-md-3">
-            <form action="{% url 'eliminar' %}" method="POST"></form>
+            <form action="{% url 'eliminar' %}" method="post"></form>
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    <label for="nombre">Ingrese el id del refugio</label>
+                    <input type="text" class="form-control" id="idRefugio" name="idRefugio" required>
                 </div>
                 <button type="submit" class="btn btn-danger">Eliminar</button>
             </form>
