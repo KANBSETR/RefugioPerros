@@ -1,6 +1,6 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 from Refugios.models import Refugio
-
+from .forms import PerroForm
 
 # Create your views here.
 def home(request):
@@ -42,9 +42,16 @@ def eliminar(request):
     
     return render(request, 'eliminarRefugio.html')
 
-def modificar(request):
-    
-    return render(request, 'modificarRefugio.html')
+def update_perro(request, idPerro):
+    perro = get_object_or_404(Perro, id=idPerro)
+    if request.method == 'POST':
+        form = PerroForm(request.POST, request.FILES, instance=perro)
+        if form.is_valid():
+            form.save()
+            return redirect('#####')
+    else:
+        form = PerroForm(instance=perro)
+    return render(request, 'update_perrito.html', {'form': form})
 
 
 def buscar(request):
