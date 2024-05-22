@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from Refugios.models import Refugio
 from .forms import PerroForm
+from .models import Perro
 
 # Create your views here.
 def home(request):
